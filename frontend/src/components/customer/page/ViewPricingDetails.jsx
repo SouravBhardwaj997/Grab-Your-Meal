@@ -59,13 +59,13 @@ export default function ViewPricingDetails() {
 
             <h3 class="tit5 t-center m-b-50 m-t-5">Pricing Plans</h3>
             <div class="row">
-              {pricings.map((el) => (
+              {pricings.map((el, index) => (
                 <div class="col-md-8 col-lg-4 m-l-r-auto p-b-30">
                   <div class="blo5 pos-relative p-t-60">
                     <div class="pic-blo5 size14 bo4 wrap-cir-pic hov-img-zoom ab-c-t">
                       <a href="#">
                         <div className="fs-75  bg-white">
-                          <b>{el.duration}</b>
+                          <b>{index + 1}</b>
                         </div>
                       </a>
                     </div>

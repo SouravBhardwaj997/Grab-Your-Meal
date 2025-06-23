@@ -33,9 +33,9 @@ export default function Header() {
               {/* <!-- Logo --> */}
               <div className="logo">
                 <a href="#">
-                  <h1 className="text-light">
+                  <h2 className="text-light">
                     Grab <span className="text-danger">Your</span> Meal
-                  </h1>
+                  </h2>
                 </a>
               </div>
 

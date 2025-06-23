@@ -159,7 +159,7 @@ export default function ManageBookings() {
                             <td>{i?.endDate}</td>
                             <td>Rs. {i?.pricing.price}</td>
                             <td>{i?.status}</td>
-                            <td>{getDate(i?.createdat)}</td>
+                            <td>{i?.createdAt.split("T")[0]}</td>
                             <td>
                               <button
                                 className="btn btn-success m-r-10"

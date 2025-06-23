@@ -13,26 +13,69 @@ const addBooking = async (req, res) => {
   try {
     const { id: pricing } = req.params;
     const { id: customer } = req.user;
-    const { duration } = await Pricing.findById(pricing);
     const { startDate } = req.body;
 
     if (!startDate) {
       return res
         .status(400)
-        .send({ success: true, message: "Start Date is not provided" });
+        .send({ success: false, message: "Start Date is not provided" });
     }
-    console.log(duration, pricing, customer, startDate);
+
+    const pricingDetails = await Pricing.findById(pricing);
+    if (!pricingDetails) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Pricing plan not found" });
+    }
+
+    const { duration } = pricingDetails;
     const endDate = calculateEndDate(startDate, duration);
+
     const booking = await Booking.create({
       customer,
       pricing,
       startDate,
       endDate,
-      status: true,
+      status: "Pending", // Initial status is pending until payment is confirmed
+      paymentStatus: "Pending",
     });
+
+    return res.status(201).json({
+      success: true,
+      message: "Booking created",
+      booking,
+      amount: pricingDetails.price,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
+// Add a new method to update payment status
+const updatePaymentStatus = async (req, res) => {
+  try {
+    const { bookingId } = req.params;
+    const { paymentStatus } = req.body;
+
+    const booking = await Booking.findByIdAndUpdate(
+      bookingId,
+      {
+        paymentStatus,
+        status: paymentStatus === "Completed" ? "Approved" : "Pending",
+      },
+      { new: true }
+    );
+
+    if (!booking) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Booking not found" });
+    }
+
     return res
-      .status(201)
-      .json({ success: true, message: "Booking added", booking });
+      .status(200)
+      .json({ success: true, message: "Payment status updated", booking });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ success: false, message: "Server Error" });
@@ -92,4 +135,10 @@ const updateStatusOfBooking = async (req, res) => {
   }
 };
 
-export { addBooking, getUserBookings, getAllBookings, updateStatusOfBooking };
+export {
+  addBooking,
+  getUserBookings,
+  getAllBookings,
+  updateStatusOfBooking,
+  updatePaymentStatus,
+};

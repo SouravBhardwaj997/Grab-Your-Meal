@@ -16,7 +16,15 @@ const bookingSchema = new Schema(
     status: {
       type: String,
       required: true,
-      default: "Pending",
+      default: "Approved", // Since we only create after payment
+    },
+    paymentId: {
+      type: String,
+      required: true,
+    },
+    orderId: {
+      type: String,
+      required: true,
     },
     startDate: {
       type: String,

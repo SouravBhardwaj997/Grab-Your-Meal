@@ -12,6 +12,7 @@ import mealRoute from "./routes/meal.route.js";
 import pricingRoute from "./routes/pricing.route.js";
 import bookingRoute from "./routes/booking.route.js";
 import customeBookingRoute from "./routes/customBooking.route.js";
+import paymentRoute from "./routes/payment.route.js";
 const app = express();
 const PORT = process.env.PORT;
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use("/api/user", userRoute); //Successfully working in postman
 app.use("/api/booking", authMiddleware, bookingRoute);
 app.use("/api/custom-booking", authMiddleware, customeBookingRoute);
+app.use("/api/payment", authMiddleware, paymentRoute);
 
 //routes -> Admin
 app.use("/api/admin/meals", mealRoute); //Successfully Workin gin Postman

@@ -96,6 +96,7 @@ const deletePricing = async (req, res) => {
 const getSinglePricing = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id);
     const pricing = await Pricing.findById(id);
     if (!pricing) {
       return res

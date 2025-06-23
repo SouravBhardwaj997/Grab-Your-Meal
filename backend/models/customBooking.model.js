@@ -5,40 +5,48 @@ const customBookingSchema = new Schema(
     customer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
-      require: true,
+      required: true,
     },
     breakfastCount: {
       type: String,
-      require: true,
+      required: true,
     },
     lunchCount: {
       type: String,
-      require: true,
+      required: true,
     },
     dinnerCount: {
       type: String,
-      require: true,
+      required: true,
     },
-    daysCont: {
+    dayCount: {
       type: String,
-      require: true,
+      required: true,
     },
     startDate: {
       type: String,
-      require: true,
+      required: true,
     },
     endDate: {
       type: String,
-      require: true,
+      required: true,
     },
     finalPrice: {
       type: String,
-      require: true,
+      required: true,
     },
     status: {
       type: String,
-      require: true,
-      default: "Pending",
+      required: true,
+      default: "Approved", // Since we only create after payment
+    },
+    paymentId: {
+      type: String,
+      required: true,
+    },
+    orderId: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }

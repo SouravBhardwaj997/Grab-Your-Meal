@@ -21,8 +21,8 @@ const adminMiddleware = async (req, res, next) => {
         .json({ success: false, message: "Access denied. Admins only." });
     }
 
-    req.user = user; // Attach user data to request
-    next(); // Proceed to the next middleware/route handler
+    req.user = user;
+    next();
   } catch (error) {
     console.error(error);
     return res.status(500).json({ success: false, message: "Server error" });

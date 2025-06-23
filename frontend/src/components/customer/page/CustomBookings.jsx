@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import axios from "axios";
+import {
+  initiatePayment,
+  verifyPayment,
+} from "../../../services/payment.service";
+
 export default function CustomBookings() {
   const nav = useNavigate();
   const [breakfasts, setbreakfasts] = useState("");
@@ -56,7 +61,7 @@ export default function CustomBookings() {
     try {
       const response = await axios.get("/api/admin/meals", {
         params: {
-          type: "breakfast",
+          type: "Bmreakfast",
         },
       });
       setBreakfastPrice(response.data.meals[0].pricePerDay);
@@ -100,13 +105,71 @@ export default function CustomBookings() {
     setTotalPrice(total);
   };
 
+  const handlePayment = async (orderData, bookingData) => {
+    const options = {
+      key: orderData.key,
+      amount: orderData.amount,
+      currency: orderData.currency,
+      order_id: orderData.id,
+      name: "Dial-a-Meal",
+      description: "Custom Food Booking Payment",
+      handler: async function (response) {
+        try {
+          const verificationResponse = await verifyPayment({
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          });
+
+          if (verificationResponse.success) {
+            const bookingResponse = await axios.post("/api/custom-booking", {
+              ...bookingData,
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+            });
+
+            if (bookingResponse.data.success) {
+              toast.success("Booking created successfully!");
+              nav("/viewbookings");
+            } else {
+              toast.error("Failed to create booking");
+            }
+          } else {
+            toast.error("Payment verification failed");
+          }
+        } catch (err) {
+          console.error(err);
+          toast.error("Payment verification failed");
+        } finally {
+          setloading(false);
+        }
+      },
+      modal: {
+        ondismiss: function () {
+          setloading(false);
+          toast.info("Payment cancelled");
+        },
+      },
+      prefill: {
+        name: sessionStorage.getItem("userName"),
+        email: sessionStorage.getItem("userEmail"),
+      },
+      theme: {
+        color: "#F37254",
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
   const handleForm = async (e) => {
     e.preventDefault();
     setloading(true);
     await calculateTotalPrice();
 
     try {
-      await axios.post("/api/custom-booking", {
+      const bookingData = {
         breakfastCount: breakfasts,
         lunchCount: lunchs,
         dinnerCount: dinners,
@@ -114,16 +177,18 @@ export default function CustomBookings() {
         startDate: startdate,
         endDate: enddate,
         finalPrice: totalPrice,
-      });
-      setloading(false);
-      nav("/");
-      setTimeout(() => {
-        toast.success("Your booking has been added");
-      }, 300);
+      };
+
+      // Initiate payment first
+      const orderId = `ORDER_${Date.now()}`;
+      const paymentData = await initiatePayment(totalPrice, orderId);
+
+      // Open Razorpay payment form with booking data
+      handlePayment(paymentData, bookingData);
     } catch (err) {
       setloading(false);
       toast.error("Something Went Wrong");
-      console.log("Error in adding booking", err);
+      console.log("Error in payment initiation", err);
     }
   };
 
