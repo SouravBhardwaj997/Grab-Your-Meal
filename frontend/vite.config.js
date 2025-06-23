@@ -5,7 +5,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8000",
+        target: "https://grab-your-meal-backend.onrender.com/",
         changeOrigin: true,
         secure: false, // ✅ Bypass SSL verification (for self-signed certs)
       },
