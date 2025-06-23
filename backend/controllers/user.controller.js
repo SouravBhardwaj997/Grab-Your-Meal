@@ -39,7 +39,7 @@ const createNewUser = async (req, res) => {
         message: "Password should be at least 6 characters long",
       });
     }
-    if (!contact.length == 10) {
+    if (!(contact.length == 10)) {
       return res.status(400).json({
         success: false,
         message: "Invalid Contact",

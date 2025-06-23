@@ -7,7 +7,7 @@ export default function Footer() {
           <div className="row justify-content-center">
             <div className="col-sm-3 col-md-5  p-t-50">
               {/* <!-- - --> */}
-              <div className="logo">
+              <div className="logo text-center">
                 <a href="#">
                   <h1 className="text-light">
                     Grab <span className="text-danger">Your</span> Meal

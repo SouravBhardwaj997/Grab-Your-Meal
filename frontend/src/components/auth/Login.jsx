@@ -76,7 +76,7 @@ export default function Login() {
         style={{ backgroundImage: "url(assets/images/bg-title-page-02.jpg)" }}
       >
         <div className="text-center text-white fs-70">
-          <b>DIAL A MEAL</b>
+          <b>GRAB YOUR MEAL</b>
         </div>
         <h2 className="tit6 t-center">login</h2>
         <nav>
@@ -103,8 +103,12 @@ export default function Login() {
         data-testid="loader"
       />
 
-      <section className="section-contact bg1-pattern p-t-0 p-b-113">
-        <div className={loading && "d-none"}>
+      <section
+        className={`section-contact bg1-pattern p-t-0 p-b-113 ${
+          loading && "d-none"
+        }`}
+      >
+        <div>
           <div className="container">
             <h3 className="fs-40 text-danger t-center p-b-12 p-t-75 fs-20">
               Login here to enjoy the food.......

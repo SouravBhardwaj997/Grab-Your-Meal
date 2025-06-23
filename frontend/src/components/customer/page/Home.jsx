@@ -47,7 +47,7 @@ export default function Home() {
               <div class="div1 fixed-top mt-5 py-5">
                 <h1 class="pt-5 fs-60 mt-5 welcome-heading">Welcome to</h1>
                 <span class=" d-block mb-3 sub-heading">
-                  <b>DIAL A MEAL</b>
+                  <b>GRAB YOUR MEAL</b>
                 </span>
                 <Link to="/view-meals">
                   <button
@@ -69,8 +69,8 @@ export default function Home() {
             <div class="carousel-caption d-none d-md-block">
               <div class="div1 fixed-top mt-5 py-5">
                 <h1 class="pt-5 fs-60 mt-5 welcome-heading">Welcome to</h1>
-                <span class=" d-block mb-3 sub-heading">
-                  <b>DIAL A MEAL</b>
+                <span class="d-block mb-3 sub-heading">
+                  <b>GRAB YOUR MEAL</b>
                 </span>
                 <Link to="/view-meals">
                   <button
@@ -94,7 +94,7 @@ export default function Home() {
               <div class="div1 fixed-top mt-5 py-5">
                 <h1 class="pt-5 fs-60 mt-5 welcome-heading">Welcome to</h1>
                 <span class=" d-block mb-3 sub-heading">
-                  <b>DIAL A MEAL</b>
+                  <b>GRAB YOUR MEAL</b>
                 </span>
                 <Link to="/view-meals">
                   <button
@@ -141,7 +141,7 @@ export default function Home() {
                 <h3 className="tit3 t-center m-b-35 m-t-5">Welcome</h3>
 
                 <p className="t-center m-b-22 size3 m-l-r-auto">
-                  Rediscover the joy of eating with Dial A Meal – where every
+                  Rediscover the joy of eating with GRAB YOUR Meal – where every
                   bite feels like a warm hug from home
                 </p>
                 {/* 
@@ -172,7 +172,7 @@ export default function Home() {
         >
           <span className="tit2 p-l-15 p-r-15">Discover</span>
 
-          <h3 className="tit4 t-center p-l-15 p-r-15 p-t-3">DIAL A MEAL</h3>
+          <h3 className="tit4 t-center p-l-15 p-r-15 p-t-3">GRAB YOUR MEAL</h3>
         </div>
 
         <div className="content-intro bg-white p-t-77 p-b-133">
@@ -272,27 +272,27 @@ export default function Home() {
 
                       <div class="item-mainmenu">
                         <div class="flex-w flex-b  p-2">
-                          <a href="#" class="name-item-mainmenu txt21 p-3">
+                          <span href="#" class="name-item-mainmenu txt21 p-3">
                             Monday: {el.day1}
-                          </a>
-                          <a href="#" class="name-item-mainmenu txt21 p-3">
+                          </span>
+                          <span href="#" class="name-item-mainmenu txt21 p-3">
                             Tuesday: {el.day2}
-                          </a>
-                          <a href="#" class="name-item-mainmenu txt21 p-3">
+                          </span>
+                          <span href="#" class="name-item-mainmenu txt21 p-3">
                             Wednesday: {el.day3}
-                          </a>
-                          <a href="#" class="name-item-mainmenu txt21 p-3">
+                          </span>
+                          <span href="#" class="name-item-mainmenu txt21 p-3">
                             Thursday: {el.day4}
-                          </a>
-                          <a href="#" class="name-item-mainmenu txt21 p-3">
+                          </span>
+                          <span href="#" class="name-item-mainmenu txt21 p-3">
                             Fridaay: {el.day5}
-                          </a>
-                          <a href="#" class="name-item-mainmenu txt21 p-3">
+                          </span>
+                          <span href="#" class="name-item-mainmenu txt21 p-3">
                             Saturday: {el.day6}
-                          </a>
-                          <a href="#" class="name-item-mainmenu txt21 p-3">
+                          </span>
+                          <span href="#" class="name-item-mainmenu txt21 p-3">
                             Sunday: {el.day7}
-                          </a>
+                          </span>
                         </div>
                         <div class="line-item-mainmenu bg3-pattern"></div>
                         <h6 className="text-center">Price/Day</h6>
@@ -316,8 +316,8 @@ export default function Home() {
         <h3 className="tit3 t-center m-b-35 m-t-5">About Us</h3>
 
         <p className="t-center size32 m-l-r-auto">
-          We, Dial A Meal Tiffin Services, situated at Phagwara, Punjab, offer
-          pre-planned meal packages that a customer can customize to their
+          We, GRAB YOUR Meal Tiffin Services, situated at Phagwara, Punjab,
+          offer pre-planned meal packages that a customer can customize to their
           liking. It is our endeavor to make sure that you enjoy homely cooked
           food at very affordable rates and hassle-free packages. We offer a
           wide array of meal options in vegetarian and non-vegetarian sections.

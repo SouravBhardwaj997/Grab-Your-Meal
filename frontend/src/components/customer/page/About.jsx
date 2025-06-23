@@ -17,8 +17,8 @@ export default function About() {
         <h3 className="tit3 t-center m-b-35 m-t-5">About Us</h3>
 
         <p className="t-center size32 m-l-r-auto">
-          We, Dial A Meal Tiffin Services, situated at Phagwara, Punjab, offer
-          pre-planned meal packages that a customer can customize to their
+          We, Grab Your Meal Tiffin Services, situated at Phagwara, Punjab,
+          offer pre-planned meal packages that a customer can customize to their
           liking. It is our endeavor to make sure that you enjoy homely cooked
           food at very affordable rates and hassle-free packages. We offer a
           wide array of meal options in vegetarian and non-vegetarian sections.
@@ -129,9 +129,9 @@ export default function About() {
                 </div>
 
                 <div className="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
-                  <a href="#" className="txt34 dis-block p-b-6">
+                  <span className="txt34 dis-block p-b-6">
                     Nutri-Meal Lunch
-                  </a>
+                  </span>
 
                   <span className="dis-block t-center txt35 p-b-25">
                     Service
@@ -155,9 +155,9 @@ export default function About() {
                 </div>
 
                 <div className="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
-                  <a href="#" className="txt34 dis-block p-b-6">
+                  <span className="txt34 dis-block p-b-6">
                     customized Tiffin
-                  </a>
+                  </span>
 
                   <span className="dis-block t-center txt35 p-b-25">
                     Service
@@ -181,9 +181,9 @@ export default function About() {
                 </div>
 
                 <div className="text-blo5 size34 t-center bo-rad-10 bo7 p-t-90 p-l-35 p-r-35 p-b-30">
-                  <a href="#" className="txt34 dis-block p-b-6">
+                  <span className="txt34 dis-block p-b-6">
                     Corporate Catering
-                  </a>
+                  </span>
 
                   <span className="dis-block t-center txt35 p-b-25">
                     Service
@@ -201,7 +201,7 @@ export default function About() {
       </section>
 
       {/* <!-- Sign up  */}
-      <div className="section-signup bg1-pattern p-t-85 p-b-85">
+      {/* <div className="section-signup bg1-pattern p-t-85 p-b-85">
         <form className="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
           <span className="txt5 m-10">Specials Sign up</span>
 
@@ -215,7 +215,6 @@ export default function About() {
             <i className="fa fa-envelope ab-r-m m-r-18" aria-hidden="true"></i>
           </div>
 
-          {/* <!-- Button3  */}
           <button
             type="submit"
             className="btn3 flex-c-m size18 txt11 trans-0-4 m-10"
@@ -223,7 +222,7 @@ export default function About() {
             Sign-up
           </button>
         </form>
-      </div>
+      </div> */}
     </>
   );
 }

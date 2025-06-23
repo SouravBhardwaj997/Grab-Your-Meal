@@ -21,6 +21,7 @@ export default function Register() {
   const registerSubmit = async (e) => {
     e.preventDefault();
     setloading(true);
+
     try {
       const userData = await axios.post(
         "/api/user/register",
@@ -42,9 +43,11 @@ export default function Register() {
       setTimeout(() => {
         nav("/login");
       }, 1000);
+      setloading(false);
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
+      setloading(false);
     }
   };
 
@@ -80,8 +83,12 @@ export default function Register() {
       />
       {/* <!-- register form --> */}
 
-      <section className="section-contact bg1-pattern p-t-0 p-b-113">
-        <div className={loading && "d-none"}>
+      <section
+        className={`section-contact bg1-pattern p-t-0 p-b-113 ${
+          loading && "d-none"
+        }`}
+      >
+        <div>
           <div className="container">
             <h3 className="fs-40 text-danger t-center p-b-12 p-t-75 fs-20">
               Create a new account
@@ -214,7 +221,7 @@ export default function Register() {
                     <span className="txt5 p-b-10">Location</span>
 
                     <span className="txt23 size38">
-                      8th floor, 379 Hudson St, New York, NY 10018
+                      2nd floor, golden complex, Phagwara, Punjab
                     </span>
                   </div>
                 </div>
@@ -232,7 +239,7 @@ export default function Register() {
                   <div className="flex-col-l">
                     <span className="txt5 p-b-10">Call Us</span>
 
-                    <span className="txt23 size38">(+1) 96 716 6879</span>
+                    <span className="txt23 size38">+91-77400-70943 </span>
                   </div>
                 </div>
               </div>
