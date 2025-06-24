@@ -11,14 +11,14 @@ import { API_BASE_URL } from "../../../config/api";
 
 export default function CustomBookings() {
   const nav = useNavigate();
-  const [breakfasts, setbreakfasts] = useState("");
-  const [lunchs, setlunchs] = useState("");
-  const [dinners, setdinners] = useState("");
+  const [breakfasts, setbreakfasts] = useState();
+  const [lunchs, setlunchs] = useState();
+  const [dinners, setdinners] = useState();
   const [startdate, setstartdate] = useState("");
   const [enddate, setenddate] = useState("");
   const [loading, setloading] = useState(false);
-  const [days, setDays] = useState("");
-  const [totalPrice, setTotalPrice] = useState("");
+  const [days, setDays] = useState();
+  const [totalPrice, setTotalPrice] = useState();
   const [breakfastPrice, setBreakfastPrice] = useState();
   const [lunchPrice, setLunchPrice] = useState();
   const [dinnerPrice, setDinnerPrice] = useState();
@@ -44,6 +44,14 @@ export default function CustomBookings() {
 
   useEffect(() => {
     calculateTotalPrice();
+    // console.log("breakfast:", breakfasts);
+    // console.log("breakfast Price:", breakfastPrice);
+    // console.log("lunch:", lunchs);
+    // console.log("lunch Price:", lunchPrice);
+    // console.log("dinner:", dinners);
+    // console.log("dinner Price:", dinnerPrice);
+    // console.log("days:", days);
+    // console.log("totalPrice:", totalPrice);
   }, [breakfasts, lunchs, dinners, days, startdate]);
 
   useEffect(() => {
@@ -62,7 +70,7 @@ export default function CustomBookings() {
     try {
       const response = await axios.get(`${API_BASE_URL}/api/admin/meals`, {
         params: {
-          type: "Bmreakfast",
+          type: "Breakfast",
         },
         withCredentials: true,
       });
@@ -89,7 +97,7 @@ export default function CustomBookings() {
 
   const calculateTotalPrice = async () => {
     let total = 0;
-    console.log(total);
+
     if (breakfasts) {
       total += breakfasts * breakfastPrice;
     }
@@ -405,13 +413,12 @@ export default function CustomBookings() {
               <h4 class="txt5 m-b-18">Reserve by Phone</h4>
 
               <p class="size25">
-                Donec quis euismod purus. Donec feugiat ligula rhoncus, varius
-                nisl sed, tincidunt lectus.
-                <span class="txt25">Nulla vulputate</span>, lectus vel volutpat
-                efficitur, orci
-                <span class="txt25">lacus sodales</span>
-                sem, sit amet quam:
-                <span class="txt24">(001) 345 6889</span>
+                You can reserve the booking by calling us in the following
+                number of our
+                <span class="txt25"> team</span>, they will response to you
+                <span class="txt25"></span>
+                Here is the number:
+                <span class="txt24"> +91 77400-70943</span>
               </p>
             </div>
 
