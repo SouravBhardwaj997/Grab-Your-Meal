@@ -13,7 +13,7 @@ export default function Home() {
 
   const getAllmeals = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/admin/meals`, {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/meals`, {
         withCredentials: true,
       });
       console.log(response);

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 export default function ManageCustomBookings() {
   var [bookings, setbookings] = useState([]);
   var [loading, setloading] = useState(true);
@@ -26,11 +27,14 @@ export default function ManageCustomBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/custom-booking/all-bookings", {
-        params: {
-          status: "Pending",
-        },
-      });
+      const response = await axios.get(
+        `${API_BASE_URL}/api/custom-booking/all-bookings`,
+        {
+          params: {
+            status: "Pending",
+          },
+        }
+      );
       setbookings(response.data.bookings);
       setloading(false);
       console.log(response.data);
@@ -45,7 +49,7 @@ export default function ManageCustomBookings() {
     setloading(true);
     try {
       await axios.put(
-        `/api/custom-booking/${id}`,
+        `${API_BASE_URL}/api/custom-booking/${id}`,
         {
           status: "Approved",
         },
@@ -68,7 +72,7 @@ export default function ManageCustomBookings() {
     setloading(true);
     try {
       await axios.put(
-        `/api/custom-booking/${id}`,
+        `${API_BASE_URL}/api/custom-booking/${id}`,
         {
           status: "Rejected",
         },

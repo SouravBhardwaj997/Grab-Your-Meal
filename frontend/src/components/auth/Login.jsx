@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 export default function Login() {
   const nav = useNavigate();
@@ -23,7 +24,7 @@ export default function Login() {
     setloading(true);
     try {
       const userData = await axios.post(
-        "/api/user/login",
+        `${API_BASE_URL}/api/user/login`,
         {
           email,
           password,

@@ -4,6 +4,7 @@ import { ClockLoader } from "react-spinners";
 import moment from "moment";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function ViewCustomBookings() {
   const [bookings, setBookings] = useState([]);
@@ -30,7 +31,7 @@ export default function ViewCustomBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/custom-booking", {
+      const response = await axios.get(`${API_BASE_URL}/api/custom-booking`, {
         withCredentials: true,
       });
       console.log(response);

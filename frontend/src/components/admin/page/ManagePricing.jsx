@@ -4,6 +4,7 @@ import { ClockLoader } from "react-spinners";
 import moment from "moment";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 export default function ManagePricing() {
   const getDate = (date) => {
     let finalDate = moment(date.toDate()).format("MMM Do YY");
@@ -23,7 +24,7 @@ export default function ManagePricing() {
 
   const getAllpricings = async () => {
     try {
-      const response = await axios.get("/api/admin/pricing", {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/pricing`, {
         withCredentials: true,
       });
       setpricings(response.data.pricings);
@@ -39,7 +40,7 @@ export default function ManagePricing() {
     if (confirm) {
       setloading(true);
       try {
-        await axios.delete(`/api/admin/pricing/${id}`, {
+        await axios.delete(`${API_BASE_URL}/api/admin/pricing/${id}`, {
           withCredentials: true,
         });
         setloading(false);

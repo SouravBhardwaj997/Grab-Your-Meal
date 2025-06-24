@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import moment from "moment";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../config/api";
 import axios from "axios";
 export default function ManageBookings() {
   const nav = useNavigate();
@@ -38,9 +39,12 @@ export default function ManageBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/booking/all-bookings", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${API_BASE_URL}/api/booking/all-bookings`,
+        {
+          withCredentials: true,
+        }
+      );
       setbookings(response.data.bookings);
       setloading(false);
       console.log(response.data);
@@ -55,7 +59,7 @@ export default function ManageBookings() {
     setloading(true);
     try {
       await axios.put(
-        `/api/booking/${id}`,
+        `${API_BASE_URL}/api/booking/${id}`,
         {
           status: "Approved",
         },
@@ -78,7 +82,7 @@ export default function ManageBookings() {
     setloading(true);
     try {
       await axios.put(
-        `/api/booking/${id}`,
+        `${API_BASE_URL}/api/booking/${id}`,
         {
           status: "Rejected",
         },

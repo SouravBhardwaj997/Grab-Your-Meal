@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ClockLoader } from "react-spinners";
+import { API_BASE_URL } from "../../../config/api";
 export default function ViewMeals() {
   var [meals, setmeals] = useState([]);
   let [loading, setloading] = useState(true);
@@ -13,7 +14,7 @@ export default function ViewMeals() {
 
   const getAllmeals = async () => {
     try {
-      const response = await axios.get("/api/admin/meals", {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/meals`, {
         withCredentials: true,
       });
       console.log(response);

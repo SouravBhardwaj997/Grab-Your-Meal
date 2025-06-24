@@ -7,6 +7,7 @@ import {
   initiatePayment,
   verifyPayment,
 } from "../../../services/payment.service";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function AddBookings() {
   var nav = useNavigate();
@@ -26,7 +27,7 @@ export default function AddBookings() {
   const fetchPricingDetails = async () => {
     try {
       const response = await axios.get(
-        `/api/admin/pricing/single-pricing/${id}`,
+        `${API_BASE_URL}/api/admin/pricing/single-pricing/${id}`,
         {
           withCredentials: true,
         }
@@ -56,7 +57,7 @@ export default function AddBookings() {
 
           if (verificationResponse.success) {
             const bookingResponse = await axios.post(
-              `/api/booking/${id}`,
+              `${API_BASE_URL}/api/booking/${id}`,
               {
                 startDate: bookingData.startDate,
                 paymentId: response.razorpay_payment_id,

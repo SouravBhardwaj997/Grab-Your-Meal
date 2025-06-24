@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../config/api";
 export default function RejectedBookings() {
   var [bookings, setbookings] = useState([]);
   var [loading, setloading] = useState(true);
@@ -16,10 +17,13 @@ export default function RejectedBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/booking/all-bookings", {
-        params: { status: "Rejected" },
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${API_BASE_URL}/api/booking/all-bookings`,
+        {
+          params: { status: "Rejected" },
+          withCredentials: true,
+        }
+      );
       console.log(response.data);
       setbookings(response.data.bookings);
       setloading(false);
@@ -35,7 +39,7 @@ export default function RejectedBookings() {
     setloading(true);
     try {
       await axios.put(
-        `/api/booking/${id}`,
+        `${API_BASE_URL}/api/booking/${id}`,
         {
           status: "Approved",
         },

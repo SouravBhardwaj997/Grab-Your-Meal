@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 export default function Register() {
   <ToastContainer />;
 
@@ -24,7 +25,7 @@ export default function Register() {
 
     try {
       const userData = await axios.post(
-        "/api/user/register",
+        `${API_BASE_URL}/api/user/register`,
         {
           name,
           email,

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 export default function CompletedCustomBookings() {
   var [bookings, setbookings] = useState([]);
   var [loading, setloading] = useState(true);
@@ -27,12 +28,15 @@ export default function CompletedCustomBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/custom-booking/all-bookings", {
-        params: {
-          status: "Completed",
-        },
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${API_BASE_URL}/api/custom-booking/all-bookings`,
+        {
+          params: {
+            status: "Completed",
+          },
+          withCredentials: true,
+        }
+      );
       setbookings(response.data.bookings);
       setloading(false);
       console.log(response.data);

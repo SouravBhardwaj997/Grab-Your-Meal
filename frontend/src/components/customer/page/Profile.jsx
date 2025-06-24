@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { ClockLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function Profile() {
   <ToastContainer />;
@@ -32,7 +33,7 @@ export default function Profile() {
       try {
         const id = sessionStorage.getItem("userId");
 
-        const user = await axios(`/api/user/${id}`, {
+        const user = await axios(`${API_BASE_URL}/api/user/${id}`, {
           withCredentials: true,
         });
 
@@ -57,7 +58,7 @@ export default function Profile() {
     try {
       // const id = sessionStorage.getItem("userId");
       const updateUserData = await axios.put(
-        `/api/user/update-profile`,
+        `${API_BASE_URL}/api/user/update-profile`,
         {
           ...userData,
         },

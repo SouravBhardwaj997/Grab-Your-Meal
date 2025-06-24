@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function AddMeal() {
   var nav = useNavigate("");
@@ -27,7 +28,7 @@ export default function AddMeal() {
 
     try {
       await axios.post(
-        "/api/admin/meals",
+        `${API_BASE_URL}/api/admin/meals`,
         {
           day1: Monday,
           day2: Tuesday,

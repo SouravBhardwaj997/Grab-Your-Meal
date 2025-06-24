@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../config/api";
 export default function ManageCustomers() {
   var [users, setusers] = useState([]);
   var [loading, setloading] = useState(true);
@@ -16,7 +17,7 @@ export default function ManageCustomers() {
 
   const getAllusers = async () => {
     try {
-      const response = await axios.get("/api/user", {
+      const response = await axios.get(`${API_BASE_URL}/api/user`, {
         withCredentials: true,
       });
       setusers(response.data.users);
@@ -33,7 +34,7 @@ export default function ManageCustomers() {
       if (confirm) {
         setloading(true);
         const response = await axios.put(
-          `/api/user/update-status/${id}`,
+          `${API_BASE_URL}/api/user/update-status/${id}`,
           {
             status: false,
           },
@@ -61,7 +62,7 @@ export default function ManageCustomers() {
       if (confirm) {
         setloading(true);
         const response = await axios.put(
-          `/api/user/update-status/${id}`,
+          `${API_BASE_URL}/api/user/update-status/${id}`,
           {
             status: true,
           },

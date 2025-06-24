@@ -5,6 +5,7 @@ import { ClockLoader } from "react-spinners";
 // import { db } from "../../../Firebase";
 // import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function UpdateMeal() {
   const params = useParams();
@@ -33,9 +34,12 @@ export default function UpdateMeal() {
 
   const getSingleMeal = async () => {
     try {
-      const response = await axios(`/api/admin/meals/single-meal/${id}`, {
-        withCredentials: true,
-      });
+      const response = await axios(
+        `${API_BASE_URL}/api/admin/meals/single-meal/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
       console.log(response.data.meal);
       setMonday(response.data.meal.day1);
       setTuesday(response.data.meal.day2);
@@ -56,7 +60,7 @@ export default function UpdateMeal() {
     setloading(true);
     try {
       await axios.put(
-        `/api/admin/meals/${id}`,
+        `${API_BASE_URL}/api/admin/meals/${id}`,
         {
           day1: Monday,
           day2: Tuesday,

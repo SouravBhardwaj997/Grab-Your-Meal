@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function AddPricing() {
   var nav = useNavigate();
@@ -24,7 +25,7 @@ export default function AddPricing() {
     try {
       console.log(name, description, duration, price);
       await axios.post(
-        "/api/admin/pricing",
+        `${API_BASE_URL}/api/admin/pricing`,
         {
           name,
           description,

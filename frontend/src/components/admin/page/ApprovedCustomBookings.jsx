@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function ApprovedCustomBookings() {
   var [bookings, setbookings] = useState([]);
@@ -23,13 +24,16 @@ export default function ApprovedCustomBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/custom-booking/all-bookings", {
-        params: {
-          status: "Approved",
-        },
+      const response = await axios.get(
+        `${API_BASE_URL}/api/custom-booking/all-bookings`,
+        {
+          params: {
+            status: "Approved",
+          },
 
-        withCredentials: true,
-      });
+          withCredentials: true,
+        }
+      );
       setbookings(response.data.bookings);
       setloading(false);
       console.log(response.data);
@@ -44,7 +48,7 @@ export default function ApprovedCustomBookings() {
     setloading(true);
     try {
       await axios.put(
-        `/api/custom-booking/${id}`,
+        `${API_BASE_URL}/api/custom-booking/${id}`,
         {
           status: "Rejected",
         },
@@ -69,7 +73,7 @@ export default function ApprovedCustomBookings() {
 
     try {
       await axios.put(
-        `/api/custom-booking/${id}`,
+        `${API_BASE_URL}/api/custom-booking/${id}`,
         {
           status: "Completed",
         },

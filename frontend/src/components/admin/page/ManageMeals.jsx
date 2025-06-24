@@ -4,6 +4,7 @@ import { ClockLoader } from "react-spinners";
 import moment from "moment";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function ManageMeals() {
   var [meals, setmeals] = useState([]);
@@ -18,7 +19,7 @@ export default function ManageMeals() {
 
   const getAllmeals = async () => {
     try {
-      const response = await axios.get("/api/admin/meals", {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/meals`, {
         withCredentials: true,
       });
       setmeals(response.data.meals);
@@ -33,7 +34,7 @@ export default function ManageMeals() {
     if (confirm) {
       setloading(true);
       try {
-        await axios.delete(`/api/admin/meals/${id}`, {
+        await axios.delete(`${API_BASE_URL}/api/admin/meals/${id}`, {
           withCredentials: true,
         });
         setloading(false);

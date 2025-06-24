@@ -7,6 +7,7 @@ import {
   initiatePayment,
   verifyPayment,
 } from "../../../services/payment.service";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function CustomBookings() {
   const nav = useNavigate();
@@ -59,21 +60,21 @@ export default function CustomBookings() {
   };
   const getAllmeals = async () => {
     try {
-      const response = await axios.get("/api/admin/meals", {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/meals`, {
         params: {
           type: "Bmreakfast",
         },
         withCredentials: true,
       });
       setBreakfastPrice(response.data.meals[0].pricePerDay);
-      const response2 = await axios.get("/api/admin/meals", {
+      const response2 = await axios.get(`${API_BASE_URL}/api/admin/meals`, {
         params: {
           type: "Lunch",
         },
         withCredentials: true,
       });
       setLunchPrice(response2.data.meals[0].pricePerDay);
-      const response3 = await axios.get("/api/admin/meals", {
+      const response3 = await axios.get(`${API_BASE_URL}/api/admin/meals`, {
         params: {
           type: "Dinner",
         },
@@ -126,7 +127,7 @@ export default function CustomBookings() {
 
           if (verificationResponse.success) {
             const bookingResponse = await axios.post(
-              "/api/custom-booking",
+              `${API_BASE_URL}/api/custom-booking`,
               {
                 ...bookingData,
                 paymentId: response.razorpay_payment_id,

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../config/api";
 export default function UpdatePricing() {
   const params = useParams();
   const id = params.id;
@@ -21,9 +22,12 @@ export default function UpdatePricing() {
   }, []);
   const getSinglePricing = async () => {
     try {
-      const response = await axios(`/api/admin/pricing/single-pricing/${id}`, {
-        withCredentials: true,
-      });
+      const response = await axios(
+        `${API_BASE_URL}/api/admin/pricing/single-pricing/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
 
       setname(response.data.pricing.name);
       setdescription(response.data.pricing.description);
@@ -40,7 +44,7 @@ export default function UpdatePricing() {
     setloading(true);
     try {
       await axios.put(
-        `/api/admin/pricing/${id}`,
+        `${API_BASE_URL}/api/admin/pricing/${id}`,
         {
           name,
           description,

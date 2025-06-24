@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 export default function ApprovedBookings() {
   const nav = useNavigate();
 
@@ -18,10 +19,13 @@ export default function ApprovedBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/booking/all-bookings", {
-        params: { status: "Approved" },
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${API_BASE_URL}/api/booking/all-bookings`,
+        {
+          params: { status: "Approved" },
+          withCredentials: true,
+        }
+      );
       console.log(response.data);
       setbookings(response.data.bookings);
       setloading(false);
@@ -37,7 +41,7 @@ export default function ApprovedBookings() {
     setloading(true);
     try {
       await axios.put(
-        `/api/booking/${id}`,
+        `${API_BASE_URL}/api/booking/${id}`,
         {
           status: "Rejected",
         },

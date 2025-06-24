@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../config/api";
 // import moment from "moment";
 
 export default function ViewBookings() {
@@ -30,7 +31,7 @@ export default function ViewBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/booking", {
+      const response = await axios.get(`${API_BASE_URL}/api/booking`, {
         withCredentials: true,
       });
       console.log(response);

@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ClockLoader } from "react-spinners";
 import axios from "axios";
+import { API_BASE_URL } from "../../../config/api";
 
 export default function ViewPricingDetails() {
   const params = useParams();
@@ -20,7 +21,7 @@ export default function ViewPricingDetails() {
   }, []);
   const getAllpricings = async () => {
     try {
-      const response = await axios.get("/api/admin/pricing", {
+      const response = await axios.get(`${API_BASE_URL}/api/admin/pricing`, {
         withCredentials: true,
       });
       console.log(response);

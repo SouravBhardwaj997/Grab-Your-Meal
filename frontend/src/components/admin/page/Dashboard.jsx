@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../../../config/api";
 // import { db } from "../../../Firebase";
 
 export default function Dashboard() {
@@ -14,20 +15,29 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const mealsResponse = await axios.get("/api/admin/meals", {
-          withCredentials: true,
-        });
+        const mealsResponse = await axios.get(
+          `${API_BASE_URL}/api/admin/meals`,
+          {
+            withCredentials: true,
+          }
+        );
         setMealCount(mealsResponse.data.meals.length);
-        const pricingResposne = await axios.get("/api/admin/pricing", {
-          withCredentials: true,
-        });
+        const pricingResposne = await axios.get(
+          `${API_BASE_URL}/api/admin/pricing`,
+          {
+            withCredentials: true,
+          }
+        );
         setPricingCount(pricingResposne.data.pricings.length);
-        const bookingResponse = await axios.get("/api/booking/all-bookings", {
-          withCredentials: true,
-        });
+        const bookingResponse = await axios.get(
+          `${API_BASE_URL}/api/booking/all-bookings`,
+          {
+            withCredentials: true,
+          }
+        );
         setBookingCount(bookingResponse.data.bookings.length);
         const customeBookingResponse = await axios.get(
-          "/api/custom-booking/all-bookings",
+          `${API_BASE_URL}/api/custom-booking/all-bookings`,
           {
             withCredentials: true,
           }
