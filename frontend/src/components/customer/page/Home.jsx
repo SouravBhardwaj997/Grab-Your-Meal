@@ -14,6 +14,7 @@ export default function Home() {
       const response = await axios.get("/api/admin/meals", {
         withCredentials: true,
       });
+      console.log(response);
       setmeals(response.data.meals);
     } catch (error) {
       console.log(error);
