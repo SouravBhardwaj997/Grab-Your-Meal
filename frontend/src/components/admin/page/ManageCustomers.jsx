@@ -23,6 +23,8 @@ export default function ManageCustomers() {
       setusers(response.data.users);
       setloading(false);
     } catch (error) {
+      setloading(false);
+
       toast.error(error.response.data.message);
     }
   };

@@ -50,7 +50,7 @@ export default function Home() {
               alt="..."
             />
             <div class="carousel-caption d-none d-md-block">
-              <div class="div1 fixed-top ">
+              <div class="div1 h-full fixed-top d-flex flex-column justify-content-center align-item-center ">
                 <h1 class="pt-5 fs-60 mt-5 welcome-heading">Welcome to</h1>
                 <span class=" d-block mb-3 sub-heading">
                   <b>GRAB YOUR MEAL</b>
@@ -73,7 +73,7 @@ export default function Home() {
               alt="..."
             />
             <div class="carousel-caption d-none d-md-block">
-              <div class="div1 fixed-top mt-5 py-5">
+              <div class="div1 h-full fixed-top d-flex flex-column justify-content-center align-item-center">
                 <h1 class="pt-5 fs-60 mt-5 welcome-heading">Welcome to</h1>
                 <span class="d-block mb-3 sub-heading">
                   <b>GRAB YOUR MEAL</b>
@@ -97,7 +97,7 @@ export default function Home() {
               alt="..."
             />
             <div class="carousel-caption d-none d-md-block">
-              <div class="div1 fixed-top mt-5 py-5">
+              <div class="div1 h-full fixed-top d-flex flex-column justify-content-center align-item-center">
                 <h1 class="pt-5 fs-60 mt-5 welcome-heading">Welcome to</h1>
                 <span class=" d-block mb-3 sub-heading">
                   <b>GRAB YOUR MEAL</b>
