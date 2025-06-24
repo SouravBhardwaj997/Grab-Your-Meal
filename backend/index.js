@@ -18,6 +18,7 @@ const PORT = process.env.PORT;
 
 //middlewares
 app.use(express.json());
+//chnaged cors
 app.use(
   cors({
     origin: "https://grab-your-meal.vercel.app/",

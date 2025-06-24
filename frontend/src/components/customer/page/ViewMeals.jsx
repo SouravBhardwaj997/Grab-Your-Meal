@@ -47,7 +47,7 @@ export default function ViewMeals() {
         <section class="section-mainmenu p-t-110 p-b-70 bg1-pattern">
           <div class="container-fluid">
             <div class="row">
-              {meals.map((el) => (
+              {meals?.map((el) => (
                 <div
                   class="col-md-10 col-lg-3 p-r-35 p-r-15-lg m-l-r-auto"
                   key={el._id}

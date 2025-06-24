@@ -98,7 +98,7 @@ export default function ViewBookings() {
                       </tr>
                     </thead>
                     <tbody>
-                      {bookings.map((i, index) => (
+                      {bookings?.map((i, index) => (
                         <tr key={index}>
                           <td scope="row">{index + 1}</td>
                           <td>{i?.customer.name}</td>
