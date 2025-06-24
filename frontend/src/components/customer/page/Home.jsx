@@ -3,6 +3,8 @@ import { ToastContainer } from "react-toastify";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+import { API_BASE_URL } from "../../../config/api";
 export default function Home() {
   var [meals, setmeals] = useState([]);
   useEffect(() => {
@@ -11,7 +13,7 @@ export default function Home() {
 
   const getAllmeals = async () => {
     try {
-      const response = await axios.get("/api/admin/meals", {
+      const response = await axios.get(`${API_BASE_URL}/admin/meals`, {
         withCredentials: true,
       });
       console.log(response);
