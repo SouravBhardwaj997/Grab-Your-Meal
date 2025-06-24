@@ -16,6 +16,7 @@ export default function ViewMeals() {
       const response = await axios.get("/api/admin/meals", {
         withCredentials: true,
       });
+      console.log(response);
       setmeals(response.data.meals);
       setloading(false);
     } catch (error) {
@@ -47,7 +48,7 @@ export default function ViewMeals() {
         <section class="section-mainmenu p-t-110 p-b-70 bg1-pattern">
           <div class="container-fluid">
             <div class="row">
-              {meals?.map((el) => (
+              {meals.map((el) => (
                 <div
                   class="col-md-10 col-lg-3 p-r-35 p-r-15-lg m-l-r-auto"
                   key={el._id}
