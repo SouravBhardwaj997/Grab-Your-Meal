@@ -114,9 +114,7 @@ export default function About() {
         <div className="container t-center">
           <span className="tit2 t-center">Services</span>
 
-          <h3 className="tit5 t-center m-b-50 m-t-5">
-            Exceptional range of services
-          </h3>
+          <h3 className="tit5 t-center m-b-50 m-t-5">range of services</h3>
 
           <div className="row">
             <div className="col-md-8 col-lg-4 m-l-r-auto p-b-30">

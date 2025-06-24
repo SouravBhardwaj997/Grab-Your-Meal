@@ -529,7 +529,7 @@ input[type="date" i] {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -738,7 +738,7 @@ input[type="date" i] {
   }
 
   .wrap_header {
-    height: 100px;
+    height: 60px;
   }
 }
 
@@ -809,7 +809,7 @@ input[type="date" i] {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
-  transition: all 0.4s;
+  transitigon: all 0.4s;
 }
 
 .item-gallery-sidebar:hover:after {
@@ -818,7 +818,9 @@ input[type="date" i] {
 
 @media (max-width: 576px) {
   .wrap_header {
-    height: 80px;
+    height: 30px;
+    width: 90%;
+    margin: 0px;
   }
 
   .gallery-sidebar {
@@ -1636,4 +1638,13 @@ body {
   letter-spacing: 1rem;
   font-size: 98px;
   word-spacing: -10px;
+}
+
+@media (max-width: 1025px) {
+  .sub-heading {
+    font-family: Poppins;
+    letter-spacing: 0.5rem;
+    font-size: 70px;
+    word-spacing: -10px;
+  }
 }

@@ -13,6 +13,7 @@ export default function Home() {
 
   const getAllmeals = async () => {
     try {
+      console.log(API_BASE_URL);
       const response = await axios.get(`${API_BASE_URL}/api/admin/meals`, {
         withCredentials: true,
       });
@@ -49,7 +50,7 @@ export default function Home() {
               alt="..."
             />
             <div class="carousel-caption d-none d-md-block">
-              <div class="div1 fixed-top mt-5 py-5">
+              <div class="div1 fixed-top ">
                 <h1 class="pt-5 fs-60 mt-5 welcome-heading">Welcome to</h1>
                 <span class=" d-block mb-3 sub-heading">
                   <b>GRAB YOUR MEAL</b>
@@ -113,25 +114,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-target="#carouselExampleCaptions"
-          data-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-target="#carouselExampleCaptions"
-          data-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </button>
       </div>
       {/* banner end */}
 
