@@ -26,17 +26,23 @@ export default function AddMeal() {
     setloading(true);
 
     try {
-      await axios.post("/api/admin/meals", {
-        day1: Monday,
-        day2: Tuesday,
-        day3: Wednesday,
-        day4: Thursday,
-        day5: Friday,
-        day6: Saturday,
-        day7: Sunday,
-        type,
-        pricePerDay: priceperday,
-      });
+      await axios.post(
+        "/api/admin/meals",
+        {
+          day1: Monday,
+          day2: Tuesday,
+          day3: Wednesday,
+          day4: Thursday,
+          day5: Friday,
+          day6: Saturday,
+          day7: Sunday,
+          type,
+          pricePerDay: priceperday,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       setTimeout(() => {
         toast.success("Meal Added");
       }, 700);

@@ -31,6 +31,7 @@ export default function CompletedCustomBookings() {
         params: {
           status: "Completed",
         },
+        withCredentials: true,
       });
       setbookings(response.data.bookings);
       setloading(false);

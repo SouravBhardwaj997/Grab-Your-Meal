@@ -20,7 +20,9 @@ export default function ViewPricingDetails() {
   }, []);
   const getAllpricings = async () => {
     try {
-      const response = await axios.get("/api/admin/pricing");
+      const response = await axios.get("/api/admin/pricing", {
+        withCredentials: true,
+      });
       console.log(response);
       setpricings(response.data.pricings);
       setloading(false);

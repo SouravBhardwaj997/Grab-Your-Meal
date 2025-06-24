@@ -18,6 +18,7 @@ export default function RejectedBookings() {
     try {
       const response = await axios.get("/api/booking/all-bookings", {
         params: { status: "Rejected" },
+        withCredentials: true,
       });
       console.log(response.data);
       setbookings(response.data.bookings);
@@ -33,9 +34,15 @@ export default function RejectedBookings() {
   const approveBooking = async (id) => {
     setloading(true);
     try {
-      await axios.put(`/api/booking/${id}`, {
-        status: "Approved",
-      });
+      await axios.put(
+        `/api/booking/${id}`,
+        {
+          status: "Approved",
+        },
+        {
+          withCredentials: true,
+        }
+      );
       nav("/admin/approvedbookings");
       setTimeout(() => {
         toast.success("Booking Approved successfully!");

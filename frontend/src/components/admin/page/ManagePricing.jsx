@@ -23,7 +23,9 @@ export default function ManagePricing() {
 
   const getAllpricings = async () => {
     try {
-      const response = await axios.get("/api/admin/pricing");
+      const response = await axios.get("/api/admin/pricing", {
+        withCredentials: true,
+      });
       setpricings(response.data.pricings);
       console.log(response.data);
       setloading(false);
@@ -37,7 +39,9 @@ export default function ManagePricing() {
     if (confirm) {
       setloading(true);
       try {
-        await axios.delete(`/api/admin/pricing/${id}`);
+        await axios.delete(`/api/admin/pricing/${id}`, {
+          withCredentials: true,
+        });
         setloading(false);
         toast.success("Pricing Deleted Succesfully");
       } catch (err) {

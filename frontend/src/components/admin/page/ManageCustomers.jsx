@@ -16,7 +16,9 @@ export default function ManageCustomers() {
 
   const getAllusers = async () => {
     try {
-      const response = await axios.get("/api/user");
+      const response = await axios.get("/api/user", {
+        withCredentials: true,
+      });
       setusers(response.data.users);
       setloading(false);
     } catch (error) {
@@ -39,6 +41,7 @@ export default function ManageCustomers() {
             headers: {
               "Content-Type": "application/json",
             },
+            withCredentials: true,
           }
         );
         toast.success("User Blocked Succesfully");
@@ -66,6 +69,7 @@ export default function ManageCustomers() {
             headers: {
               "Content-Type": "application/json",
             },
+            withCredentials: true,
           }
         );
         toast.success("User Unblocked Succesfully");

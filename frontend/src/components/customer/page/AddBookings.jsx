@@ -26,7 +26,10 @@ export default function AddBookings() {
   const fetchPricingDetails = async () => {
     try {
       const response = await axios.get(
-        `/api/admin/pricing/single-pricing/${id}`
+        `/api/admin/pricing/single-pricing/${id}`,
+        {
+          withCredentials: true,
+        }
       );
       setPricingDetails(response.data.pricing);
     } catch (error) {
@@ -52,11 +55,17 @@ export default function AddBookings() {
           });
 
           if (verificationResponse.success) {
-            const bookingResponse = await axios.post(`/api/booking/${id}`, {
-              startDate: bookingData.startDate,
-              paymentId: response.razorpay_payment_id,
-              orderId: response.razorpay_order_id,
-            });
+            const bookingResponse = await axios.post(
+              `/api/booking/${id}`,
+              {
+                startDate: bookingData.startDate,
+                paymentId: response.razorpay_payment_id,
+                orderId: response.razorpay_order_id,
+              },
+              {
+                withCredentials: true,
+              }
+            );
 
             if (bookingResponse.data.success) {
               toast.success("Booking created successfully!");

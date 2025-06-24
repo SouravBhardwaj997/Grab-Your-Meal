@@ -21,7 +21,9 @@ export default function UpdatePricing() {
   }, []);
   const getSinglePricing = async () => {
     try {
-      const response = await axios(`/api/admin/pricing/single-pricing/${id}`);
+      const response = await axios(`/api/admin/pricing/single-pricing/${id}`, {
+        withCredentials: true,
+      });
 
       setname(response.data.pricing.name);
       setdescription(response.data.pricing.description);
@@ -37,12 +39,18 @@ export default function UpdatePricing() {
     e.preventDefault();
     setloading(true);
     try {
-      await axios.put(`/api/admin/pricing/${id}`, {
-        name,
-        description,
-        duration,
-        price,
-      });
+      await axios.put(
+        `/api/admin/pricing/${id}`,
+        {
+          name,
+          description,
+          duration,
+          price,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       setloading(false);
       nav("/admin/Manage-Pricings");
       setTimeout(() => {

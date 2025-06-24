@@ -23,12 +23,18 @@ export default function AddPricing() {
 
     try {
       console.log(name, description, duration, price);
-      await axios.post("/api/admin/pricing", {
-        name,
-        description,
-        duration,
-        price,
-      });
+      await axios.post(
+        "/api/admin/pricing",
+        {
+          name,
+          description,
+          duration,
+          price,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       setTimeout(() => {
         toast.success("Pricing Added");
       }, 700);

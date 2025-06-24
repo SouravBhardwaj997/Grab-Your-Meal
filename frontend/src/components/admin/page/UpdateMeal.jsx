@@ -33,7 +33,9 @@ export default function UpdateMeal() {
 
   const getSingleMeal = async () => {
     try {
-      const response = await axios(`/api/admin/meals/single-meal/${id}`);
+      const response = await axios(`/api/admin/meals/single-meal/${id}`, {
+        withCredentials: true,
+      });
       console.log(response.data.meal);
       setMonday(response.data.meal.day1);
       setTuesday(response.data.meal.day2);
@@ -53,15 +55,21 @@ export default function UpdateMeal() {
     e.preventDefault();
     setloading(true);
     try {
-      await axios.put(`/api/admin/meals/${id}`, {
-        day1: Monday,
-        day2: Tuesday,
-        day3: Wednesday,
-        day4: Thursday,
-        day5: Friday,
-        day6: Saturday,
-        day7: Sunday,
-      });
+      await axios.put(
+        `/api/admin/meals/${id}`,
+        {
+          day1: Monday,
+          day2: Tuesday,
+          day3: Wednesday,
+          day4: Thursday,
+          day5: Friday,
+          day6: Saturday,
+          day7: Sunday,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       setloading(false);
       nav("/admin/manage-meals");
       setTimeout(() => {

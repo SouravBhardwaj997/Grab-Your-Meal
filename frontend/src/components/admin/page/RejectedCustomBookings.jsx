@@ -22,6 +22,7 @@ export default function RejectedCustomBookings() {
         params: {
           status: "Rejected",
         },
+        withCredentials: true,
       });
       setbookings(response.data.bookings);
       setloading(false);

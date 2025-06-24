@@ -11,7 +11,9 @@ export default function Home() {
 
   const getAllmeals = async () => {
     try {
-      const response = await axios.get("/api/admin/meals");
+      const response = await axios.get("/api/admin/meals", {
+        withCredentials: true,
+      });
       setmeals(response.data.meals);
     } catch (error) {
       console.log(error);

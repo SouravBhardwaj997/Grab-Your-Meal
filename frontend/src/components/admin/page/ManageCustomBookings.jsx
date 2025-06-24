@@ -44,9 +44,15 @@ export default function ManageCustomBookings() {
   const approveBooking = async (id) => {
     setloading(true);
     try {
-      await axios.put(`/api/custom-booking/${id}`, {
-        status: "Approved",
-      });
+      await axios.put(
+        `/api/custom-booking/${id}`,
+        {
+          status: "Approved",
+        },
+        {
+          withCredentials: true,
+        }
+      );
       nav("/admin/approvedcustombookings");
       setTimeout(() => {
         toast.success("Booking Approved successfully!");
@@ -61,9 +67,15 @@ export default function ManageCustomBookings() {
   const rejectBooking = async (id) => {
     setloading(true);
     try {
-      await axios.put(`/api/custom-booking/${id}`, {
-        status: "Rejected",
-      });
+      await axios.put(
+        `/api/custom-booking/${id}`,
+        {
+          status: "Rejected",
+        },
+        {
+          withCredentials: true,
+        }
+      );
       nav("/admin/rejectedcustombookings");
       setTimeout(() => {
         toast.success("Booking Approved successfully!");

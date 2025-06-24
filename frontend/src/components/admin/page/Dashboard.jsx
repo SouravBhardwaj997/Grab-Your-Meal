@@ -14,14 +14,23 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const mealsResponse = await axios.get("/api/admin/meals");
+        const mealsResponse = await axios.get("/api/admin/meals", {
+          withCredentials: true,
+        });
         setMealCount(mealsResponse.data.meals.length);
-        const pricingResposne = await axios.get("/api/admin/pricing");
+        const pricingResposne = await axios.get("/api/admin/pricing", {
+          withCredentials: true,
+        });
         setPricingCount(pricingResposne.data.pricings.length);
-        const bookingResponse = await axios.get("/api/booking/all-bookings");
+        const bookingResponse = await axios.get("/api/booking/all-bookings", {
+          withCredentials: true,
+        });
         setBookingCount(bookingResponse.data.bookings.length);
         const customeBookingResponse = await axios.get(
-          "/api/custom-booking/all-bookings"
+          "/api/custom-booking/all-bookings",
+          {
+            withCredentials: true,
+          }
         );
         setCustomBookCount(customeBookingResponse.data.bookings.length);
       } catch (error) {

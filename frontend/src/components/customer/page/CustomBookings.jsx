@@ -63,18 +63,21 @@ export default function CustomBookings() {
         params: {
           type: "Bmreakfast",
         },
+        withCredentials: true,
       });
       setBreakfastPrice(response.data.meals[0].pricePerDay);
       const response2 = await axios.get("/api/admin/meals", {
         params: {
           type: "Lunch",
         },
+        withCredentials: true,
       });
       setLunchPrice(response2.data.meals[0].pricePerDay);
       const response3 = await axios.get("/api/admin/meals", {
         params: {
           type: "Dinner",
         },
+        withCredentials: true,
       });
       setDinnerPrice(response3.data.meals[0].pricePerDay);
     } catch (error) {
@@ -122,11 +125,17 @@ export default function CustomBookings() {
           });
 
           if (verificationResponse.success) {
-            const bookingResponse = await axios.post("/api/custom-booking", {
-              ...bookingData,
-              paymentId: response.razorpay_payment_id,
-              orderId: response.razorpay_order_id,
-            });
+            const bookingResponse = await axios.post(
+              "/api/custom-booking",
+              {
+                ...bookingData,
+                paymentId: response.razorpay_payment_id,
+                orderId: response.razorpay_order_id,
+              },
+              {
+                withCredentials: true,
+              }
+            );
 
             if (bookingResponse.data.success) {
               toast.success("Booking created successfully!");

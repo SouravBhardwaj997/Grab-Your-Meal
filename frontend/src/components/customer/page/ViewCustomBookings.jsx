@@ -30,7 +30,9 @@ export default function ViewCustomBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/custom-booking");
+      const response = await axios.get("/api/custom-booking", {
+        withCredentials: true,
+      });
       console.log(response);
       setBookings(response.data.bookings);
       setLoading(false);

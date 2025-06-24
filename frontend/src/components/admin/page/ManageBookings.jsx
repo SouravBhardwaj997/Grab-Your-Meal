@@ -38,7 +38,9 @@ export default function ManageBookings() {
 
   const getAllBookings = async () => {
     try {
-      const response = await axios.get("/api/booking/all-bookings");
+      const response = await axios.get("/api/booking/all-bookings", {
+        withCredentials: true,
+      });
       setbookings(response.data.bookings);
       setloading(false);
       console.log(response.data);
@@ -52,9 +54,15 @@ export default function ManageBookings() {
   const approveBooking = async (id) => {
     setloading(true);
     try {
-      await axios.put(`/api/booking/${id}`, {
-        status: "Approved",
-      });
+      await axios.put(
+        `/api/booking/${id}`,
+        {
+          status: "Approved",
+        },
+        {
+          withCredentials: true,
+        }
+      );
       nav("/admin/approvedbookings");
       setTimeout(() => {
         toast.success("Booking Approved successfully!");
@@ -69,9 +77,15 @@ export default function ManageBookings() {
   const rejectBooking = async (id) => {
     setloading(true);
     try {
-      await axios.put(`/api/booking/${id}`, {
-        status: "Rejected",
-      });
+      await axios.put(
+        `/api/booking/${id}`,
+        {
+          status: "Rejected",
+        },
+        {
+          withCredentials: true,
+        }
+      );
       nav("/admin/rejectedbookings");
       setTimeout(() => {
         toast.success("Booking Approved successfully!");

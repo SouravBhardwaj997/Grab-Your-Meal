@@ -32,7 +32,9 @@ export default function Profile() {
       try {
         const id = sessionStorage.getItem("userId");
 
-        const user = await axios(`/api/user/${id}`);
+        const user = await axios(`/api/user/${id}`, {
+          withCredentials: true,
+        });
 
         setUserData(user.data.user);
       } catch (error) {
@@ -63,6 +65,7 @@ export default function Profile() {
           headers: {
             "Content-Type": "application/json",
           },
+          withCredentials: true,
         }
       );
       setUserData(updateUserData);

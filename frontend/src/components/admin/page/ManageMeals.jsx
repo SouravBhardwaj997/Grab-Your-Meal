@@ -18,7 +18,9 @@ export default function ManageMeals() {
 
   const getAllmeals = async () => {
     try {
-      const response = await axios.get("/api/admin/meals");
+      const response = await axios.get("/api/admin/meals", {
+        withCredentials: true,
+      });
       setmeals(response.data.meals);
       setloading(false);
     } catch (error) {
@@ -31,7 +33,9 @@ export default function ManageMeals() {
     if (confirm) {
       setloading(true);
       try {
-        await axios.delete(`/api/admin/meals/${id}`);
+        await axios.delete(`/api/admin/meals/${id}`, {
+          withCredentials: true,
+        });
         setloading(false);
         toast.success("Meal Deleted Succesfully");
       } catch (err) {

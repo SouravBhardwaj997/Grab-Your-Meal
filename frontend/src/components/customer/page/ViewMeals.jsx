@@ -13,7 +13,9 @@ export default function ViewMeals() {
 
   const getAllmeals = async () => {
     try {
-      const response = await axios.get("/api/admin/meals");
+      const response = await axios.get("/api/admin/meals", {
+        withCredentials: true,
+      });
       setmeals(response.data.meals);
       setloading(false);
     } catch (error) {
